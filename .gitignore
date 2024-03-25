@@ -1,0 +1,29 @@
+# Binaries for programs and plugins
+*.exe
+/unbabel_cli
+
+# Output of running the tool
+/output
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+cover.html
+
+# Dependency directories
+vendor/
+
+# IDE folders
+.idea
+out/
+
+# Debug files
+**/__debug_bin
+*.log
+
+# VS Code folders
+.vscode
+
+.DS_Store

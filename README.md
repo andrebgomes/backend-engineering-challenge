@@ -1,3 +1,32 @@
+# How to build
+
+`make build` will create the binary *unbabel_cli* under the project root directory.
+
+# Usage
+
+`./unbabel_cli -h` will output the help menu:
+```
+Usage of ./unbabel_cli:
+  -input_file string
+    	file containing the stream events
+  -window_size int
+    	number of past minutes that will be handled (default 10)
+```
+
+Running the tool will generate the output written into a file *output* under the project root directory.
+
+`./unbabel_cli -input_file internal/translationdeliverytime/testdata/input` will run the tool using the example stream from below.
+
+# Other commands
+
+`make test` will run the unit tests.
+
+`make coverage` will show the tests coverage.
+
+`make coverage-html` will create and open an html showing the coverage.
+
+***
+
 # Backend Engineering Challenge
 
 
