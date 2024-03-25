@@ -13,12 +13,13 @@ import (
 	"time"
 )
 
+// TranslationDeliveryTimeApp is to be used for calculating the Translation Delivery Time SLA.
 type TranslationDeliveryTimeApp struct {
 	inputEvents string
 	windowSize  int
 }
 
-// NewTranslationDeliveryTimeApp returns an instance of NewTranslationDeliveryTimeApp.
+// NewTranslationDeliveryTimeApp returns an instance of TranslationDeliveryTimeApp.
 // inputEvents 	- string containing the stream of events
 // windowSize 	- minutes taken into account for the average
 func NewTranslationDeliveryTimeApp(inputEvents string, windowSize int) TranslationDeliveryTimeApp {
@@ -46,7 +47,7 @@ func (t TranslationDeliveryTimeApp) parseTranslationDeliveredEvents() (eventsMap
 	// Go through each line of the stream events
 	scanner := bufio.NewScanner(strings.NewReader(t.inputEvents))
 	for scanner.Scan() {
-		// Convert it to a struct
+		// Convert it into a struct
 		var td TranslationDelivered
 		if err := json.Unmarshal([]byte(scanner.Text()), &td); err != nil {
 			return nil, time.Time{}, time.Time{}, err

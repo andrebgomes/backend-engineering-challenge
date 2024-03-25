@@ -1,3 +1,5 @@
+// This package implements a CLI tool that calculates and outputs the
+// moving average of translations delivery time.
 package main
 
 import (
@@ -54,6 +56,5 @@ func main() {
 	_, err = outputFile.WriteString(output)
 	if err != nil {
 		sugaredLogger.Error("writing output file: ", err)
-		return
 	}
 }
