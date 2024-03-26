@@ -5,6 +5,7 @@ package main
 import (
 	"backend-engineering-challenge/internal/translationdeliverytime"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -29,6 +30,12 @@ func main() {
 	sugaredLogger := logger.With(
 		zap.String("input_file", *inputFile),
 		zap.Int("window_size", *windowSize)).Sugar()
+
+	// Validate inputs
+	if err := validate(*inputFile, *windowSize); err != nil {
+		sugaredLogger.Error(err)
+		return
+	}
 
 	// Read the input file
 	input, err := os.ReadFile(*inputFile)
@@ -57,4 +64,14 @@ func main() {
 	if err != nil {
 		sugaredLogger.Error("writing output file: ", err)
 	}
+}
+
+func validate(inputFile string, windowSize int) error {
+	if inputFile == "" {
+		return fmt.Errorf("input_file is empty")
+	}
+	if windowSize <= 0 {
+		return fmt.Errorf("window_size must be greater than 0")
+	}
+	return nil
 }

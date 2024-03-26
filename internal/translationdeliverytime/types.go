@@ -33,10 +33,12 @@ func (t *TranslationDelivered) UnmarshalJSON(bytes []byte) error {
 	if err := json.Unmarshal(bytes, &td); err != nil {
 		return err
 	}
+
 	time, err := time.Parse("2006-01-02 15:04:05.000000", td.Timestamp)
 	if err != nil {
 		return err
 	}
+
 	t.Timestamp = time
 	t.Duration = td.Duration
 	return nil
@@ -66,10 +68,12 @@ func (a AverageDeliveryTime) String() string {
 	if math.IsNaN(a.AverageDeliveryTime) {
 		return fmt.Sprintf("{\"date\": \"%s\", \"average_delivery_time\": 0}", date)
 	}
+	// Handle average decimal places
 	i := math.Trunc(a.AverageDeliveryTime)
 	iStr := fmt.Sprintf("%.1f", a.AverageDeliveryTime)
 	if a.AverageDeliveryTime == i {
 		iStr = fmt.Sprintf("%.0f", a.AverageDeliveryTime)
 	}
+
 	return fmt.Sprintf("{\"date\": \"%s\", \"average_delivery_time\": %s}", date, iStr)
 }

@@ -23,7 +23,7 @@ Running the tool will generate the output written into a file *output* under the
 
 `make coverage` will show the tests coverage.
 
-`make coverage-html` will create and open an html showing the coverage.
+`make coverage-html` will create and open an html showing the tests coverage for each file.
 
 ***
 
