@@ -51,6 +51,15 @@ func TestRun(t *testing.T) {
 	}
 }
 
+func BenchmarkRun(b *testing.B) {
+	inputEvents := readFile(&testing.T{}, "testdata/input")
+	app := translationdeliverytime.NewTranslationDeliveryTimeApp(inputEvents, 10)
+
+	for i := 0; i < b.N; i++ {
+		_, _ = app.Run()
+	}
+}
+
 func readFile(t *testing.T, file string) string {
 	t.Helper()
 	events, err := os.ReadFile(file)
